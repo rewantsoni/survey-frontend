@@ -23,6 +23,7 @@ function SurveyCreate() {
         client.post('/createSurvey', {
             data
         }).then(function (response) {
+            //create a new page or prompt with the link to the survey
             console.log(response);
         })
     };
@@ -63,6 +64,8 @@ function SurveyCreate() {
                     />
                 </label>
                 {setEmail(context.state.email)}
+
+
                 {indexes.map(index => {
                     let fieldName = `Questions[${index}]`;
                     return (
@@ -77,18 +80,21 @@ function SurveyCreate() {
                             </label>
                             <button type="button" onClick={removeQuestion(index)}>
                                 Remove
-                        </button>
+                            </button>
                         </fieldset>
                     );
                 })}
 
                 <button type="button" onClick={addQuesstion}>
                     Add Question
-            </button>
+                </button>
+
                 <button type="button" onClick={clearQuestions}>
                     Clear All Questions
-            </button>
+                </button>
+
                 <input type="submit" />
+
             </form>);
     }
 
@@ -100,16 +106,10 @@ function SurveyCreate() {
 
     //rendering the page components
     const renderCreate = (context) => {
-        console.log(context)
-        if (context.state.isSignedin) {
-            return createSurvey(context);
-        } else {
-            console.log(context)
-            return renderLogin();
-        }
+        return context.state.isSignedin ? createSurvey(context) : renderLogin();
     }
 
-    
+
     return (
         <MyContext.Consumer>{(context => { return renderCreate(context) }
         )}</MyContext.Consumer>

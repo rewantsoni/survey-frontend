@@ -16,8 +16,8 @@ class SurveyList extends React.Component {
 
     }
 
-    ////TODO:
-    renderList() {
+    ////TODO: call using api
+    renderList(context) {
         return <div>List of surveys ----- </div>
     }
 
@@ -27,10 +27,8 @@ class SurveyList extends React.Component {
             <MyContext.Consumer>{(context =>
                 <div>
                     <h2>Your Surveys and Polls:</h2>
-                    {/* <p>{context.state}</p> */}
-                    {console.log(context.state)}
                     <div className="ui celled list">
-                        {this.renderList()}
+                        {this.renderList(context)}
                         {this.renderCreate(context)}
                     </div>
                 </div>
