@@ -3,18 +3,6 @@ import { Link } from 'react-router-dom';
 import MyContext from '../MyContext/MyContext'
 class SurveyList extends React.Component {
 
-    renderAdmin(stream) {
-        if (stream.userId === this.props.currentUserId) {
-            return (
-                <div className="right floated content">
-                    <Link to={`/streams/edit/${stream.id}`} className="ui button primary">Edit</Link>
-                    <Link to={`/streams/delete/${stream.id}`} className="ui button negative">
-                        Delete
-                    </Link>
-                </div>
-            );
-        }
-    }
     renderCreate(context) {
         if (context.state.isSignedin) {
             return (
@@ -27,9 +15,13 @@ class SurveyList extends React.Component {
         }
 
     }
+
+    ////TODO:
     renderList() {
         return <div>List of surveys ----- </div>
     }
+
+
     render() {
         return (
             <MyContext.Consumer>{(context =>

@@ -1,6 +1,8 @@
 import MyContext from '../MyContext/MyContext';
 import React, { Component } from 'react';
 
+
+//custom Provider to pass values 
 class MyProvider extends Component {
     state = { email: "", name: "", isSignedin: false }
     render() {
