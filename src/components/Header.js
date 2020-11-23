@@ -4,7 +4,6 @@ import MyContext from './MyContext/MyContext'
 import GoogleBtn from './googleLogin/googlelogin';
 
 const Header = (data) => {
-    // console.log(prop)
     return (
         <MyContext.Consumer>{(context =>
             <div className="ui secondary pointing menu ">

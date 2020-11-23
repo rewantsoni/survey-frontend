@@ -16,7 +16,6 @@ class SurveyList extends React.Component {
         }
     }
     renderCreate(context) {
-        // console.log(context.state.isSignedin)
         if (context.state.isSignedin) {
             return (
                 <div style={{ textAlign: 'right ' }}>

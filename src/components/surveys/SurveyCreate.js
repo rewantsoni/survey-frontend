@@ -3,14 +3,24 @@ import { Link } from 'react-router-dom';
 import MyContext from '../MyContext/MyContext'
 import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
+import client from "../../apis/createSurvey";
 
 function SurveyCreate() {
     const [indexes, setIndexes] = React.useState([]);
     const [counter, setCounter] = React.useState(0);
     const { register, handleSubmit } = useForm();
 
+    let email = "";
+
     const onSubmit = data => {
+
+        data.email = email
         console.log(data);
+        client.post('/createSurvey', {
+            data
+        }).then(function (response) {
+            console.log(response);
+        })
     };
 
     const addQuesstion = () => {
@@ -67,6 +77,7 @@ function SurveyCreate() {
 
     const renderCreate = (context) => {
         console.log(context)
+        email = context.state.email
         if (context.state.isSignedin) {
             return createSurvey();
         } else {
