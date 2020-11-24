@@ -12,7 +12,7 @@ const Header = () => {
                 </Link>
                 <div className="right menu">
                     <Link to="/" className="item">
-                        <button type="button">Home</button>
+                        <button type="button" className="ui secondary button">Home</button>
                     </Link>
                     <GoogleBtn />
                 </div>
