@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import MyContext from '../MyContext/MyContext'
-import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
-import client from "../../apis/createSurvey";
+import client from "../../apis/surveyapp";
 
 function SurveyCreate() {
     const [indexes, setIndexes] = React.useState([]);
@@ -11,20 +10,25 @@ function SurveyCreate() {
     const [surveyName, setSurveyName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const { register, handleSubmit } = useForm();
+    const history = useHistory();
 
-
-    //Check the warning
-    //to submit the survey form
+    //Check the warning to submit the survey form
     const onSubmit = data => {
 
         data.email = email
         data.surveyName = surveyName
         console.log(data);
-        client.post('/createSurvey', {
-            data
-        }).then(function (response) {
-            //create a new page or prompt with the link to the survey
+        client.post('/createSurvey', data).then(function (response) {
+            var id = response.data.data
+            console.log(id.substring(id.length - 8));
+            var copyText = 'http://localhost:3000/'.concat(id.substring(id.length - 8))
+            navigator.clipboard.writeText(copyText).then(function () {
+                alert('Link has been copied to clipboard.')
+            }, function () {
+                alert('Unable copied to clipboard.')
+            });
             console.log(response);
+            history.push('/');
         })
     };
 
@@ -101,7 +105,7 @@ function SurveyCreate() {
 
     //Prompt if not logged in
     const renderLogin = () => {
-        return (<div>Please login to create</div>);
+        return (<h3>Please login to create a survey.</h3>);
     }
 
     //rendering the page components

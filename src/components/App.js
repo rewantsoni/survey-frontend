@@ -5,6 +5,7 @@ import MyProvider from './Provider/MyProvider'
 import SurveyList from './surveys/surveyList';
 import SurveyCreate from './surveys/SurveyCreate';
 // import SurveyShow from './surveys/SurveyShow';
+import SurveyTake from './surveys/SurveyTake';
 
 
 
@@ -23,7 +24,7 @@ class App extends Component {
                 <Route path="/" exact component={SurveyList} />
                 <Route path="/survey/create" exact component={SurveyCreate} />
                 {/* <Route path="survey/show/:id" exact component={SurveyShow} /> */}
-                {/* <Route path="/:id" exact component={SurveyTake}/> */}
+                <Route path="/:id" exact component={SurveyTake}/>
               </Switch>
             </div>
           </BrowserRouter>
