@@ -33,7 +33,6 @@ class SurveyList extends React.Component {
             .then(response => {
                 if (response.data.success) {
                     this.setState({ "data": response.data.data })
-                    console.log(response)
                 } else {
                     console.log(response.data.error)
                 }
@@ -41,7 +40,6 @@ class SurveyList extends React.Component {
     }
 
     renderSurveys() {
-        console.log(this.state.data)
         return this.state.data.map(survey => {
             return (
                 <div className="item" key={survey.formID}>
@@ -51,6 +49,9 @@ class SurveyList extends React.Component {
                             onClick={() => navigator.clipboard.writeText('http://localhost:3000/'.concat(survey.formID))}>
                             Copy Shareable Link
                             </div>
+                        <Link className="ui button" to={`/survey/show/${survey.formID}`}>
+                            View Results
+                        </Link>
                     </div>
                     <div className="middle aligned content">
                         {survey.surveyName}

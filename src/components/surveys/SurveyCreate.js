@@ -17,7 +17,6 @@ function SurveyCreate() {
 
         data.email = email
         data.surveyName = surveyName
-        console.log(data);
         client.post('/createSurvey', data).then(function (response) {
             var id = response.data.data
             console.log(id.substring(id.length - 8));
@@ -58,46 +57,47 @@ function SurveyCreate() {
     //create the survey form
     const createSurvey = (context) => {
         return (
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <label>Survey Name:
+            <form onSubmit={handleSubmit(onSubmit)} className="ui form">
+                <div className="field">
+                    <label>Survey Name:
                         <input
-                        type="text"
-                        onChange={e => setSurveyName(e.target.value)}
-                        name='surveyName'
-                        ref={register}
-                    />
-                </label>
-                {setEmail(context.state.email)}
-
+                            type="text"
+                            onChange={e => setSurveyName(e.target.value)}
+                            name='surveyName'
+                            ref={register({ required: true })}
+                        />
+                    </label>
+                    {setEmail(context.state.email)}
+                </div>
 
                 {indexes.map(index => {
                     let fieldName = `Questions[${index}]`;
                     return (
-                        <fieldset name={fieldName} key={fieldName}>
+                        <div name={fieldName} key={fieldName} className="field">
                             <label>
                                 Question:
                             <input
                                     type="text"
                                     name={`${fieldName}.question`}
-                                    ref={register}
+                                    ref={register({ required: true })}
                                 />
                             </label>
-                            <button type="button" onClick={removeQuestion(index)}>
+                            <button type="button" onClick={removeQuestion(index)} className="ui button negative">
                                 Remove
                             </button>
-                        </fieldset>
+                        </div>
                     );
                 })}
 
-                <button type="button" onClick={addQuesstion}>
+                <button type="button" onClick={addQuesstion} className="ui button">
                     Add Question
                 </button>
 
-                <button type="button" onClick={clearQuestions}>
+                <button type="button" onClick={clearQuestions} className="ui button negative">
                     Clear All Questions
                 </button>
 
-                <input type="submit" />
+                <input type="submit" className="ui button primary" />
 
             </form>);
     }
