@@ -49,7 +49,7 @@ class SurveyList extends React.Component {
                             onClick={() => navigator.clipboard.writeText('http://localhost:3000/'.concat(survey.formID))}>
                             Copy Shareable Link
                             </div>
-                        <Link className="ui button" to={`/survey/show/${survey.formID}`}>
+                        <Link className="ui button secondary" to={`/survey/show/${survey.formID}`}>
                             View Results
                         </Link>
                     </div>
@@ -65,6 +65,8 @@ class SurveyList extends React.Component {
             if (this.state.email !== context.state.email) this.setState({ "email": context.state.email })
             return (
                 <div>
+                    <img src ="https://getthematic.com/insights/content/images/wordpress/2018/04/xshutterstock_730381336.jpg.pagespeed.ic.3n8A1pF6pc.jpg" alt="img1" className="ui centered image"></img>
+                    <div class="ui section divider"></div>
                     <h2>Your Surveys and Polls:</h2>
                     <h3>List of Surveys: </h3>
                     <div className="ui big middle aligned divided list">
@@ -75,7 +77,9 @@ class SurveyList extends React.Component {
         else
             return (
                 <div>
-                    <h3>Please signIn to view your surveys or create one.</h3>
+                    <img src ="https://getthematic.com/insights/content/images/wordpress/2018/04/xshutterstock_730381336.jpg.pagespeed.ic.3n8A1pF6pc.jpg" alt="img1" className="ui centered image"></img>
+                    <div class="ui section divider"></div>
+                    <h3>Please sign-in to view your surveys or create one.</h3>
                 </div>
             )
     }
@@ -87,6 +91,7 @@ class SurveyList extends React.Component {
                 <div>
                     <div className="ui celled list">
                         {this.renderList(context)}
+                        <div class="ui hidden divider"></div>
                         {this.renderCreate(context)}
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './Header';
+import Footer from './Footer';
 import MyProvider from './Provider/MyProvider'
 import SurveyList from './surveys/surveyList';
 import SurveyCreate from './surveys/SurveyCreate';
@@ -26,6 +27,7 @@ class App extends Component {
                 <Route path="/survey/show/:id" exact component={SurveyShow} />
                 <Route path="/:id" exact component={SurveyTake}/>
               </Switch>
+              <Footer />
             </div>
           </BrowserRouter>
         </div>
