@@ -21,6 +21,8 @@ class GoogleBtn extends Component {
     this.handleLogoutFailure = this.handleLogoutFailure.bind(this);
   }
 
+
+  ////
   login = (response, context) => {
     if (response.accessToken) {
       this.setState(state => ({
@@ -28,7 +30,7 @@ class GoogleBtn extends Component {
         accessToken: response.accessToken
       }));
       console.log(response);
-      context.set(response.wt.cu,response.wt.Ad,true);
+      context.set(response.Mt.tu,response.Mt.qW,true);
     }
   }
 
